@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous">
+
+        <title>Edit product</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="AllPost.html">For sell</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AllPost.html">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AddPost.html">Add product
+                            <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h3>Update your product</h3>
+            <form name="updateForm" onsubmit="updatePost(event)">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">product</label>
+                    <input name="title" type="text" class="form-control"
+                        id="title" placeholder="Enter your product Name"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">price</label>
+                    <input name="title" type="number" class="form-control"
+                        id="title" placeholder="Enter your price" required>
+                    <i class="fa-sharp-duotone fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Werienti</label>
+                    <input name="title" type="text" class="form-control"
+                        id="title" placeholder="Enter your Werienti" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea name="description" class="form-control"
+                        placeholder="Enter your description" id="description"
+                        rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Update
+                    product</button>
+            </form>
+        </div>
+
+        <script>
+        // Get all record from local storage
+        function getRecord() {
+            var localId = localStorage.getItem("sigleRecordIndex");
+            var localData = localStorage.getItem("kwiterAllPost");
+            if (localData != null) {
+                array = JSON.parse(localData);
+            } else {
+                array = [];
+            }
+
+            const filterRecord = array.filter((item, index) => {
+                return index == localId
+            });
+
+            // Show default data on input fields
+            updateForm.title.value = filterRecord[0].Tittle;
+            updateForm.description.value = filterRecord[0].Description;
+            updateForm.price.value = filterRecord[0].price;
+            updateForm. werienti.value = filterRecord[0]. Werienti;
+
+        }
+        getRecord();
+
+        // Add post - function
+        function updatePost(e) {
+            e.preventDefault();
+
+            var localId = localStorage.getItem("sigleRecordIndex");
+            var localData = localStorage.getItem("kwiterAllPost");
+            if (localData != null) {
+                array = JSON.parse(localData);
+            } else {
+                array = [];
+            }
+
+            // Get input value
+            var title = updateForm.title.value;
+            var description = updateForm.description.value;
+            var price = updateForm.price.value;
+            var price = updateForm. werienti.value;
+
+            array[localId].Tittle = title
+            array[localId].Description = description
+            array[localId]. Werienti =  Werienti
+            array[localId]. Werienti =  Werienti
+            
+                            
+
+            // Set array in local storage on kwiterAllPost key
+            localStorage.setItem("kwiterAllPost", JSON.stringify(array));
+            window.location = "SinglePost.html";
+        }
+    </script>
+
+        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>
